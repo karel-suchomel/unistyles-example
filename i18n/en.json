@@ -1,0 +1,90 @@
+{
+  "common": {
+    "inputs": {
+      "email": {
+        "label": "Email",
+        "placeholder": "you@example.com"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Password"
+      },
+      "firstName": {
+        "label": "First Name",
+        "placeholder": "First Name"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "placeholder": "Last Name"
+      },
+      "confirmPassword": {
+        "label": "Confirm Password",
+        "placeholder": "Confirm Password"
+      },
+      "rules": {
+        "length": "At least 8 characters",
+        "letters": "Capital and lowercase letters",
+        "number": "A number",
+        "special": "A special character"
+      }
+    },
+    "loginCta": "Log in",
+    "signUpCta": "Sing up",
+    "morning": "morning",
+    "afternoon": "afternoon",
+    "evening": "evening",
+    "night": "night"
+  },
+  "features": {
+    "onboarding": {
+      "title": "Log in to start improving.",
+      "toc": "By continuing you agree to our <0>Terms & Conditions</0>",
+      "emailCta": "Continue with Email",
+      "appleCta": "Continue with Apple",
+      "googleCta": "Continue with Google"
+    },
+    "login": {
+      "title": "Log in",
+      "subtitle": "Don’t have an account? <0>Sign up</0>",
+      "resetCta": "Forgot password?"
+    },
+    "signup": {
+      "title": "Become a better human"
+    },
+    "reset": {
+      "title": "Forgot your password?",
+      "subtitle": "Enter the email you used to sign up",
+      "resetCta": "Send reset link"
+    },
+    "dashboard": {
+      "progress": "Today's progress",
+      "numbOfTasks_one": "{{count}} task left",
+      "numbOfTasks_other": "{{count}} tasks left",
+      "activityOverview": "Activity Overview",
+      "day": "Day",
+      "week": "Week",
+      "month": "Month",
+      "year": "Year"
+    },
+    "habits": {
+      "progress": "Today's progress",
+      "numbOfTasks_one": "{{done}} / {{count}} habit",
+      "numbOfTasks_other": "{{done}} / {{count}} habits",
+      "remaining": "Remaining",
+      "completed": "Completed"
+    }
+  },
+  "errors": {
+    "inputs": {
+      "passwordLength": "Password must be at least 8 characters",
+      "letterCombination": "Password must include both upper and lowercase letters",
+      "passwordNumber": "Password must include a number",
+      "passwordSpecial": "Password must include special character",
+      "oldPasswordMatch": "Your new password cannot be the same as your previous one",
+      "passwordRequired": "Current password is required",
+      "oldPasswordIncorrect": "Incorrect current password",
+      "firstNameRequired": "Please enter your first name",
+      "lastNameRequired": "Please enter your last name"
+    }
+  }
+}

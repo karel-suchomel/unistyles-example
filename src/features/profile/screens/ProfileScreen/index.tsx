@@ -1,15 +1,28 @@
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
-import { Button } from '~/components/Button'
-import { useAuth } from '~/features/auth/hooks/useAuth'
-import { ms } from '~/utils/scale'
+import { useAuth } from '~/features/auth/provider'
+import { Button } from '~/theme/components/Button'
+import { Layout } from '~/theme/components/Layout'
+import { Text } from '~/theme/components/Text'
+import { tokens } from '~/theme/tokens'
+import { toggleTheme } from '~/theme/utils'
 
-export const Profile = () => {
+export function Profile() {
   const { signOut } = useAuth()
+
   return (
-    <View>
-      <Text style={{ fontSize: ms(20) }}>Profile</Text>
-      <Button text="Sign out" onPress={signOut} />
-    </View>
+    <Layout>
+      <View style={[tokens.flex_1, tokens.align_center, tokens.justify_center, tokens.gap('lg')]}>
+        <Text>Profile</Text>
+        <Button onPress={toggleTheme}>Change Theme</Button>
+        <Button
+          onPress={async () => {
+            await signOut()
+          }}
+        >
+          Sign Out
+        </Button>
+      </View>
+    </Layout>
   )
 }

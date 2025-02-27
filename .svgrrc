@@ -1,0 +1,6 @@
+{
+  "replaceAttrValues": {
+    "#525252": "{props.color || '#525252'}",
+    "#121212": "{props.stroke || '#121212'}"
+  }
+}

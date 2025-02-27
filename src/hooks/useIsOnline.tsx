@@ -1,6 +1,6 @@
 import { useNetInfo } from '@react-native-community/netinfo'
 
-export const useIsOnline = () => {
+export function useIsOnline() {
   const { isInternetReachable } = useNetInfo()
 
   return { isOnline: isInternetReachable }

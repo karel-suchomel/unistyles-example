@@ -24,27 +24,32 @@ declare const process: {
 
 // Your project defaults
 const config = {
-  appIdentifierBase: undefined,
-  expoProjectId: undefined,
-  expoProjectOwner: undefined,
-  appScheme: '',
+  appName: 'UnistylesExample',
+  appIdentifierBase: 'com.carlos154.unistylesexample',
+  expoProjectId: 'e5b4fd01-d59b-4c55-aad3-e6f1fe347b35',
+  expoProjectOwner: 'carlos154',
+  appScheme: 'com.carlos154.unistylesexample',
+  slug: 'unistyles-example',
 }
 
 const environment = process.env.EXPO_PUBLIC_APP_ENV || 'dev'
 
 // your custom fonts
-const fonts = ['./assets/fonts/Domine-Bold.ttf']
-
-// prefetched/embedded assets, can be referenced as source='rn_meme' https://docs.expo.dev/versions/latest/sdk/asset/#configurable-properties
-const assets = ['./assets/images/rn_meme.jpg']
+const fonts = [
+  './assets/fonts/Outfit.ttf',
+  './assets/fonts/HelveticaNeueRoman.otf',
+  './assets/fonts/HelveticaNeueBold.otf',
+  './assets/fonts/HelveticaNeueItalic.otf',
+  './assets/fonts/HelveticaNeueMedium.otf',
+]
 
 const getEnvironmentInfo = (): {
   name: ExpoConfig['name']
   appIdentifier: IOS['bundleIdentifier']
   icon: ExpoConfig['icon']
 } => {
-  const appIdentifier = 'com.strv.rntemplate'
-  const appName = 'Expo Template'
+  const appIdentifier = config.appIdentifierBase
+  const appName = config.appName
 
   if (environment === 'production')
     return {
@@ -65,8 +70,8 @@ const { name, appIdentifier, icon } = getEnvironmentInfo()
 const plugins: ExpoConfig['plugins'] = [
   ['expo-build-properties'],
   ['expo-font', { fonts }],
-  ['expo-asset', { assets }],
   ['expo-router'],
+  ['expo-localization'],
 ]
 
 // UPDATE VERSION AND BUILDNUMBER
@@ -80,13 +85,13 @@ const expoConfig: ExpoConfig = {
   owner: config.expoProjectOwner,
   name,
   newArchEnabled: true,
-  slug: config.appScheme,
+  slug: config.slug,
   version,
   runtimeVersion: {
     policy: 'sdkVersion',
   },
   scheme: config.appScheme,
-  orientation: 'portrait',
+  orientation: 'default',
   icon,
   userInterfaceStyle: 'light',
   splash: {

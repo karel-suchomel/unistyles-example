@@ -1,13 +1,27 @@
-import { Image } from 'expo-image'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 
-import { ms } from '~/utils/scale'
+import { AchievementList } from '../../components/AchievementList'
+import { ActivityOverview } from '../../components/ActivityOverview'
+import { Progress } from '../../components/Progress'
 
-export const Dashboard = () => {
+import { Layout } from '~/theme/components/Layout'
+import { Content } from '~/theme/components/Layout/parts/Content'
+import { tokens } from '~/theme/tokens'
+
+export function Dashboard() {
   return (
-    <View style={{ alignItems: 'center' }}>
-      <Text style={{ fontSize: ms(20) }}>Dashboard</Text>
-      <Image source="rn_meme" style={{ height: 400, width: 300 }} />
-    </View>
+    <Layout>
+      <Content contentContainerStyle={[tokens.pt('xl'), tokens.flex_grow, tokens.gap('xl')]}>
+        <View style={tokens.px('_2xl')}>
+          <Progress />
+        </View>
+        <View>
+          <AchievementList />
+        </View>
+        <View style={tokens.px('_2xl')}>
+          <ActivityOverview />
+        </View>
+      </Content>
+    </Layout>
   )
 }

@@ -6,7 +6,7 @@ import { Alert } from 'react-native'
 import { useOnForeground } from '~/hooks/useOnForeground'
 
 export type OtaUpdatePriority = 'high' | 'normal'
-export const useOTAUpdates = () => {
+export function useOTAUpdates() {
   const [wasUpdatePrompted, setWasUpdatePrompted] = useState(false)
   const fallbackToCacheTimeout = Constants.expoConfig?.extra?.fallbackToCacheTimeout as
     | number
@@ -14,25 +14,29 @@ export const useOTAUpdates = () => {
 
   const checkForOTAUpdate = useCallback(async () => {
     if (__DEV__) return
-    const updateStatus = await Updates.checkForUpdateAsync()
-    if (!updateStatus.isAvailable) return
+    try {
+      const updateStatus = await Updates.checkForUpdateAsync()
+      if (!updateStatus.isAvailable) return
 
-    const update = await Updates.fetchUpdateAsync()
-    const manifest = update.manifest
-    const otaUpdatePriority =
-      manifest &&
-      'extra' in manifest &&
-      (manifest.extra?.expoClient?.extra?.otaUpdatePriority as OtaUpdatePriority)
+      const update = await Updates.fetchUpdateAsync()
+      const manifest = update.manifest
+      const otaUpdatePriority =
+        manifest &&
+        'extra' in manifest &&
+        (manifest.extra?.expoClient?.extra?.otaUpdatePriority as OtaUpdatePriority)
 
-    // in case app is not updated during fallbackToCacheTimeout, check if to update during second launch (normal) or prompt user due to `high` priority
-    if (otaUpdatePriority === 'high') {
-      setWasUpdatePrompted(true)
-      Alert.alert(
-        'Update',
-        'A new version is available. Press to update.',
-        [{ text: 'Update', onPress: () => void Updates.reloadAsync() }],
-        { cancelable: false },
-      )
+      // in case app is not updated during fallbackToCacheTimeout, check if to update during second launch (normal) or prompt user due to `high` priority
+      if (otaUpdatePriority === 'high') {
+        setWasUpdatePrompted(true)
+        Alert.alert(
+          'Update',
+          'A new version is available. Press to update.',
+          [{ text: 'Update', onPress: () => void Updates.reloadAsync() }],
+          { cancelable: false },
+        )
+      }
+    } catch (error) {
+      console.warn('error checking for OTA update', error)
     }
   }, [])
 

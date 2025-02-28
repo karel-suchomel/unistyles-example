@@ -3,10 +3,6 @@ import { StyleSheet } from 'react-native-unistyles'
 
 import { Spacing } from './types'
 
-import { isAndroid } from '~/constants/platform'
-
-export const TRACKING = isAndroid ? 0.1 : 0
-
 export const tokens = StyleSheet.create((theme) => ({
   absolute: {
     position: 'absolute',

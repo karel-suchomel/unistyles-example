@@ -127,7 +127,7 @@ const darkTheme = {
   ...sharedTheme,
 }
 
-const themes = {
+export const themes = {
   light: lightTheme,
   dark: darkTheme,
 }

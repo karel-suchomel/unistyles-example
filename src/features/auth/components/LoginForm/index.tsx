@@ -36,7 +36,7 @@ export function LoginForm() {
         <TextField
           label={t('inputs.password.label', { ns: 'common' })}
           placeholder={t('inputs.password.placeholder', { ns: 'common' })}
-          secureTextEntry
+          isPassword
         />
         <Link
           type="p2"

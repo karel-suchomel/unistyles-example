@@ -8,6 +8,7 @@ import { View } from 'react-native'
 import { styles } from './styles'
 
 import { Card } from '~/components/Card'
+import { useAuth } from '~/features/auth/provider'
 import { Avatar } from '~/features/dashboard/components/Avatar'
 import { Icon } from '~/features/icons/components/Icon'
 import { DarkModeToggle } from '~/theme/components/DarkModeToggle'
@@ -15,6 +16,7 @@ import { Text } from '~/theme/components/Text'
 import { tokens } from '~/theme/tokens'
 
 export function DrawerContent(props: DrawerContentComponentProps) {
+  const { signOut } = useAuth()
   return (
     <DrawerContentScrollView
       style={styles.container}
@@ -67,6 +69,18 @@ export function DrawerContent(props: DrawerContentComponentProps) {
           <Icon name="plus" color={focused ? 'textPrimary' : 'textSecondary'} />
         )}
         onPress={() => {}}
+      />
+      <DrawerItem
+        activeTintColor="white"
+        style={styles.item(false)}
+        label={() => (
+          <Text type="p2" weight="semibold" lineHeight="normal" color="textSecondary">
+            Sign Out
+          </Text>
+        )}
+        onPress={() => {
+          void signOut()
+        }}
       />
     </DrawerContentScrollView>
   )
